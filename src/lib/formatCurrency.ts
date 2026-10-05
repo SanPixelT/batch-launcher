@@ -1,6 +1,6 @@
 export function formatCurrency(amount: number): string {
-  if (Number.isNaN(amount)) {
-    throw new Error("Amount must be a valid number, got NaN");
+  if (Number.isFinite(amount)) {
+    throw new Error("Amount must be a finite number, got ${amount}");
   }
 
   const formatter = new Intl.NumberFormat("en-GB", {
