@@ -37,4 +37,12 @@ describe("formatCurrency", () => {
   it("throws an error for NaN", () => {
     expect(() => formatCurrency(NaN)).toThrow();
   });
+
+  it("throws an error for Infinity", () => {
+    expect(() => formatCurrency(Infinity)).toThrow();
+  });
+
+  it("throws an error for -Infinity", () => {
+    expect(() => formatCurrency(-Infinity)).toThrow();
+  });
 });
