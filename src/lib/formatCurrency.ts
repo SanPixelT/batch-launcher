@@ -1,5 +1,5 @@
 export function formatCurrency(amount: number): string {
-  if (Number.isFinite(amount)) {
+  if (!Number.isFinite(amount)) {
     throw new Error("Amount must be a finite number, got ${amount}");
   }
 
