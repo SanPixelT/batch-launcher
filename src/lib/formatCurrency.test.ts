@@ -6,35 +6,35 @@ describe("formatCurrency", () => {
     expect(formatCurrency(1234.5)).toBe("£1,234.50");
   });
 
-  it("handles whole numbers", () => {
+  it("adds .00 to whole numbers", () => {
     expect(formatCurrency(1000)).toBe("£1,000.00");
   });
 
-  it("handles zeros", () => {
+  it("adds .00 to zeros", () => {
     expect(formatCurrency(0)).toBe("£0.00");
   });
 
-  it("handles big numbers", () => {
+  it("adds commas to large numbers", () => {
     expect(formatCurrency(1000000)).toBe("£1,000,000.00");
   });
 
-  it("handles numbers below 1", () => {
+  it("shows a leading zero for amounts under £1", () => {
     expect(formatCurrency(0.5)).toBe("£0.50");
   });
 
-  it("handles negative numbers", () => {
+  it("puts the minus sign before the £", () => {
     expect(formatCurrency(-1000)).toBe("-£1,000.00");
   });
 
-  it("handles more than 2 decimals", () => {
+  it("rounds to two decimal places", () => {
     expect(formatCurrency(1.235)).toBe("£1.24");
   });
 
-  it("handles negative zeros", () => {
-    expect(formatCurrency(-0)).toBe("-£0.00");
+  it("removes the minus sign for negative zero", () => {
+    expect(formatCurrency(-0)).toBe("£0.00");
   });
 
-  it("handles NaN", () => {
-    expect(formatCurrency(NaN)).toBe("£NaN");
+  it("throws an error for NaN", () => {
+    expect(() => formatCurrency(NaN)).toThrow();
   });
 });
